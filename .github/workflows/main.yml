@@ -17,6 +17,6 @@ jobs:
 
       - name: Build/push image to container registry
         run: |
-          sudo docker build -t ghcr.io/jesperjesper/flask-example:latest .
-          sudo docker login ghcr.io --username jesperjesper--password ${{ secrets.devopsex }}
-          sudo docker push ghcr.io/jesperjesper/flask-example:latest
+          docker build -t ghcr.io/jesperjesper/flask-example:latest .
+          docker login ghcr.io --username jesperjesper--password ${{ secrets.devopsex }}
+          docker push ghcr.io/jesperjesper/flask-example:latest
