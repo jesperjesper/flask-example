@@ -8,6 +8,7 @@ RUN apt-get update && \
         libssl-dev \
         python3-dev \
         python3-pip \
+        gnutls-bin \
         && \
     rm -rf /var/lib/apt/lists/*
 
