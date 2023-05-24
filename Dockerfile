@@ -14,7 +14,7 @@ RUN apt-get update && \
 
 WORKDIR /app
 
-RUN git clone https://github.com/jesperjesper/flask-example.git
+RUN git clone git@github.com:jesperjesper/flask-example.git
 
 WORKDIR /app/flask-example
 
