@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM python:3.9-slim-buster
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -8,9 +8,7 @@ RUN apt-get update && \
         libssl-dev \
         python3-dev \
         python3-pip \
-        gnutls-bin \
-        && \
-    rm -rf /var/lib/apt/lists/*
+        gnutls-bin 
 
 WORKDIR /app
 
@@ -23,3 +21,4 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 EXPOSE 5000
 
 CMD ["python3", "app.py"]
+
