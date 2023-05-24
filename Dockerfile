@@ -1,13 +1,24 @@
-FROM python:3.9-alpine
+FROM ubuntu:20.04
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        git \
+        build-essential \
+        libffi-dev \
+        libssl-dev \
+        python3-dev \
+        python3-pip \
+        && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-COPY requirements.txt .
-RUN apk add --no-cache build-base libffi-dev openssl-dev
-RUN pip install --no-cache-dir -r requirements.txt
+RUN git clone https://github.com/jesperjesper/flask-example.git
 
-COPY . .
+WORKDIR /app/flask-example
+
+RUN pip3 install --no-cache-dir -r requirements.txt
 
 EXPOSE 5000
 
-CMD ["python", "app.py"]
+CMD ["python3", "app.py"]
