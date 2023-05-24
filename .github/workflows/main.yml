@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build-and-deploy:
@@ -12,7 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Build and Push Docker image
+      - name: Build/push image to container registry
         run: |
           sudo docker build -t ghcr.io/jesperjesper/flask-example:latest .
           sudo docker login ghcr.io --username jesperjesper--password ${{ secrets.devopsex }}
