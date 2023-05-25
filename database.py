@@ -1,5 +1,5 @@
 import pymysql
-import mariadb
+#import mariadb
 import sqlite3
 import hashlib
 import datetime
@@ -13,7 +13,7 @@ db_password = 'mariadb'
 db_name = 'mariadb'
 
 # Establish a connection to the database
-connection = mariadb.connect(
+connection = pymsql.connect(
     host=db_host,
     port=db_port,
     user=db_user,
