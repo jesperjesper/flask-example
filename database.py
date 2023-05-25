@@ -2,6 +2,7 @@ import pymysql
 import hashlib
 import datetime
 
+
 # Database connection settings
 db_host = 'localhost'
 db_port = 3306
