@@ -1,24 +1,24 @@
 import pymysql
+import mariadb
 import sqlite3
 import hashlib
 import datetime
 
 
 # Database connection settings
-db_host = '0.0.0.0'
+db_host = 'localhost'
 db_port = 3306
 db_user = 'mariadb'
 db_password = 'mariadb'
 db_name = 'mariadb'
 
 # Establish a connection to the database
-connection = pymysql.connect(
+connection = mariadb.connect(
     host=db_host,
     port=db_port,
     user=db_user,
     password=db_password,
     db=db_name,
-    cursorclass=pymysql.cursors.DictCursor
 )
 def list_users():
     _conn = sqlite3.connect(user_db_file_location)
