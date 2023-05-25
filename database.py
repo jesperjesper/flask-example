@@ -6,7 +6,7 @@ import datetime
 
 
 # Database connection settings
-db_host = 'localhost'
+db_host = '0.0.0.0'
 db_port = 3306
 db_user = 'mariadb'
 db_password = 'mariadb'
