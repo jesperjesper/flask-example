@@ -22,6 +22,8 @@ jobs:
       - name: pip upgrade
         run: |
           python -m pip install --upgrade pip
+      - name: stopp 
+        run: docker system prune -af
       - name: Build Docker image
         run: docker build -t app:latest .
         
@@ -31,5 +33,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      - name: stopp 
+        run: docker system prune -af
       - name: Start Docker Compose services
         run: docker-compose up -d
