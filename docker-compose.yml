@@ -17,3 +17,12 @@ services:
       - 5000
     depends_on:
       - db
+      
+  apache:
+    image: httpd:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./apache-conf:/usr/local/apache2/conf
+    depends_on:
+      - app
