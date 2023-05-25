@@ -1,17 +1,16 @@
-FROM python:3.9
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        libffi-dev \
-        libssl-dev
+FROM alpine:latest
+
+RUN apk update && \
+    apk add --no-cache python3 py3-pip libffi-dev libssl-dev
 
 WORKDIR /app
 
 COPY . .
-RUN pip install --no-cache-dir --upgrade pip
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip3 install --no-cache-dir -r requirements.txt
 
 EXPOSE 5000
 
-CMD ["python", "app.py"]
+CMD ["python3", "app.py"]
+
