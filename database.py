@@ -2,10 +2,22 @@ import sqlite3
 import hashlib
 import datetime
 
-user_db_file_location = "database_file/users.db"
-note_db_file_location = "database_file/notes.db"
-image_db_file_location = "database_file/images.db"
+# Database connection settings
+db_host = 'localhost'
+db_port = 3306
+db_user = 'mariadb'
+db_password = 'mariadb'
+db_name = 'mariadb'
 
+# Establish a connection to the database
+connection = pymysql.connect(
+    host=db_host,
+    port=db_port,
+    user=db_user,
+    password=db_password,
+    db=db_name,
+    cursorclass=pymysql.cursors.DictCursor
+)
 def list_users():
     _conn = sqlite3.connect(user_db_file_location)
     _c = _conn.cursor()
