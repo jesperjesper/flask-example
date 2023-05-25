@@ -1,4 +1,4 @@
-name: ci pipeline 12
+name: ci pipeline
 
 on:
   push:
@@ -15,8 +15,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Build/push image to container registry
+      - name: Build Docker image
         run: |
           docker build -t ghcr.io/jesperjesper/flask-example:latest .
-          docker login ghcr.io --username jesperjesper--password ${{ secrets.devopsex }}
+      
+      - name: Login to container registry
+        run: |
+          docker login ghcr.io --username jesperjesper --password ${{ secrets.devopsex }}
+      
+      - name: Push Docker image to container registry
+        run: |
           docker push ghcr.io/jesperjesper/flask-example:latest
+      
+      - name: Deploy to self-hosted runner
+        run: |
+          docker stop flask-example || true
+          docker rm flask-example || true
+          docker pull ghcr.io/jesperjesper/flask-example:latest
+          docker run -d --name flask-example -p 5000:5000 ghcr.io/jesperjesper/flask-example:latest
