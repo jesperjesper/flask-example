@@ -13,11 +13,11 @@ db_name = 'mariadb'
 
 # Establish a connection to the database
 conn_params = (
-    "host"="db_host",
-    "port"="db_port",
-    "user"="db_user",
-    "password"="db_password",
-    "db"="db_name",
+    "host": "db_host",
+    "port": "db_port",
+    "user": "db_user",
+    "password": "db_password",
+    "db": "db_name",
 )
 
 def list_users():
