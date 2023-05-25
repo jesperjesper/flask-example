@@ -22,7 +22,9 @@ jobs:
       - name: pip upgrade
         run: |
           python -m pip install --upgrade pip
+      - name: Build Docker image
+        run: docker build -t app:latest .
+
       - name: Start Docker Compose services
         run: docker-compose up -d
-      #- name: Build Docker image
-       # run: docker build -t app:latest .
+      
