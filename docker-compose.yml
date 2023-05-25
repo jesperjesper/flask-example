@@ -1,21 +1,19 @@
 version: "3"
 services:
   db:
-    image: mariadb:latest
+    image: postgres:latest
     environment:
-      - MYSQL_ROOT_PASSWORD=mariadb
-      - MYSQL_DATABASE=mariadb
-      - MYSQL_USER=mariadb
-      - MYSQL_PASSWORD=mariadb
+      - POSTGRES_ROOT_PASSWORD=mariadb
+      - POSTGRESL_DATABASE=mariadb
+      - POSTGRES_USER=mariadb
+      - POSTGRES_PASSWORD=mariadb
     ports:
-      - 3306:3306
+      - 5432:5432
     volumes:
       - ./data:/var/lib/mysql
   app:
     image: ghcr.io/jesperjesper/flask-example:latest
     expose:
       - 5000
-    environment:
-      - DATABASE_URL=mysql+pymysql://mariadb:mariadb@db/mariadb
     depends_on:
       - db
