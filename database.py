@@ -12,13 +12,14 @@ db_password = 'mariadb'
 db_name = 'mariadb'
 
 # Establish a connection to the database
-connection = psycopg2.connect(
-    host=db_host,
-    port=db_port,
-    user=db_user,
-    password=db_password,
-    db=db_name,
+conn_params = (
+    "host"="db_host",
+    "port"="db_port",
+    "user"="db_user",
+    "password"="db_password",
+    "db"="db_name",
 )
+
 def list_users():
     _conn = psycopg2.connect(user_db_file_location)
     _c = _conn.cursor()
